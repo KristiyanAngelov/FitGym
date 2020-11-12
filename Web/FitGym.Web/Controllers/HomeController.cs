@@ -13,7 +13,20 @@
             return this.View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Trainers()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Contacts()
+        {
+            return this.View();
+        }
+
+        [HttpGet]
+        public IActionResult Forum()
         {
             return this.View();
         }

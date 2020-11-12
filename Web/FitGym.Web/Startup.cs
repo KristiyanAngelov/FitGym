@@ -8,7 +8,6 @@
     using FitGym.Data.Models;
     using FitGym.Data.Repositories;
     using FitGym.Data.Seeding;
-    using FitGym.Services.Data;
     using FitGym.Services.Mapping;
     using FitGym.Services.Messaging;
     using FitGym.Web.ViewModels;
@@ -63,7 +62,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
