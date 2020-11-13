@@ -44,7 +44,6 @@
             }
 
             return query.To<T>().ToList();
-
         }
 
         public T GetById<T>(int id)

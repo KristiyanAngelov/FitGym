@@ -13,15 +13,14 @@
             return this.View();
         }
 
-        [HttpGet]
         public IActionResult Trainers()
         {
             return this.View();
         }
 
-        [HttpGet]
         public IActionResult Contacts()
         {
+            
             return this.View();
         }
 

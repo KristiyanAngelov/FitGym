@@ -53,6 +53,7 @@
             {
                 return this.View(input);
             }
+
             var postId = await this.postsService.CreateAsync(input.Title, input.Content, input.CategoryId, user.Id);
             this.TempData["InfoMessage"] = "Forum post created!";
             return this.RedirectToAction(nameof(this.ById), new { id = postId });

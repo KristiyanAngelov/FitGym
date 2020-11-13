@@ -4,6 +4,10 @@
     {
         public const string SystemName = "FitGym";
 
-        public const string AdministratorRoleName = "Administrator";
+        public const string AdministratorRoleName = "Admin";
+
+        public const string TrainerRoleName = "Trainer";
+
+        public const string ClientRoleName = "Client";
     }
 }
