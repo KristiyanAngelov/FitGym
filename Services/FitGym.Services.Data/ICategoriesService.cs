@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FitGym.Services.Data
+﻿namespace FitGym.Services.Data
 {
-    class ICategoriesService
+    using System.Collections.Generic;
+
+    public interface ICategoriesService
     {
+        IEnumerable<T> GetAll<T>(int? count = null);
+
+        IEnumerable<T> GetAllPosts<T>(int id);
+
+        T GetByName<T>(string name);
     }
 }
