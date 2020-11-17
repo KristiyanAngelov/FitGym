@@ -4,4 +4,8 @@
 }
 
 <h1>@this.ViewData["Title"]</h1>
-Settings: @this.Model.SettingsCount
+
+<li class="nav-item">
+    <a asp-area="" asp-controller="Users" asp-action="AllUsers" class="btn btn-primary btn-lg">AllUsers</a>
+    <a asp-area="" asp-controller="Categories" asp-action="Create" class="btn btn-primary btn-lg">Add Forum Category</a>
+</li>

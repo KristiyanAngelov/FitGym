@@ -1,6 +1,7 @@
 ﻿namespace FitGym.Web.Controllers
 {
     using FitGym.Services.Data;
+    using FitGym.Services.Data.Interfaces;
     using FitGym.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,17 @@
             }
 
             return this.View(viewModel);
+        }
+
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CategoryCreateInputModel input)
+        {
+            //TODO IMPLEMENT POST METHOD
         }
     }
 }

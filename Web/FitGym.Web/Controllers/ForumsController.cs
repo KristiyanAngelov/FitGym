@@ -2,6 +2,7 @@
 {
     using FitGym.Data;
     using FitGym.Services.Data;
+    using FitGym.Services.Data.Interfaces;
     using FitGym.Web.ViewModels.Forum;
     using Microsoft.AspNetCore.Mvc;
 

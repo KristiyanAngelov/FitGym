@@ -1,0 +1,11 @@
+﻿@model UserAndRolesViewModel
+
+@{ 
+    var userId = ViewBag.userId;
+}
+
+<h1>@Model.Email</h1>
+@foreach (var role in Model.Roles)
+{
+    <p>@role</p>
+}

@@ -1,13 +1,12 @@
 ﻿namespace FitGym.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using FitGym.Data.Common.Repositories;
     using FitGym.Data.Models;
+    using FitGym.Services.Data.Interfaces;
     using FitGym.Services.Mapping;
 
     public class PostsService : IPostsService

@@ -1,4 +1,4 @@
-﻿namespace FitGym.Services.Data
+﻿namespace FitGym.Services.Data.Interfaces
 {
     using System.Collections.Generic;
 

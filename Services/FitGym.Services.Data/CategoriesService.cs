@@ -5,6 +5,7 @@
 
     using FitGym.Data.Common.Repositories;
     using FitGym.Data.Models;
+    using FitGym.Services.Data.Interfaces;
     using FitGym.Services.Mapping;
 
     public class CategoriesService : ICategoriesService

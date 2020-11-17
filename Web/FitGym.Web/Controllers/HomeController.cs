@@ -20,7 +20,6 @@
 
         public IActionResult Contacts()
         {
-            
             return this.View();
         }
 

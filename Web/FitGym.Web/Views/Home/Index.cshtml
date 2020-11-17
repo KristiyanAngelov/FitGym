@@ -4,8 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">I love Antoaneta!</h1>
 </div>
 
 @if (User.IsInRole("Admin"))
@@ -16,7 +15,7 @@ else if (User.IsInRole("Trainer"))
 {
     <h1>Success Trainer</h1>
 }
-else if(User.IsInRole("Client"))
+else if (User.IsInRole("Client"))
 {
     <h1>Success Client</h1>
 }

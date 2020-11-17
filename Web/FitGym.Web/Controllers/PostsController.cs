@@ -4,6 +4,7 @@
 
     using FitGym.Data.Models;
     using FitGym.Services.Data;
+    using FitGym.Services.Data.Interfaces;
     using FitGym.Web.ViewModels.Posts;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
