@@ -2,5 +2,133 @@
     this.ViewData["Title"] = "Contacts";
 }
 <h1>@this.ViewData["Title"]</h1>
+<section id="contacts">
+    <div class="container-fluid container-xl">
+        <div class="row align-items-stretch">
+            <div class="col-12 col-md-6">
+                <div class="box-wrapper light">
+                    <form method="POST" accept-charset="UTF-8" id="contacts-form" class="form-validation mw-100" novalidate="novalidate">
+                        <input name="_token" type="hidden" value="dau99G1y3uMu69DCfEqIvdk34BNBVQgjKJssypRa">
+                        <div class="top">
+                            <h5 class="header-1">
+                                Do You Have Any Questions? Write us
+                            </h5>
+                            <span class="sub-title">
+                                Write us. We will be happy to advise you, to hear your feedback or questions.
+                            </span>
+                        </div>
+                        <div class="row align-items-stretch">
+                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="contacts-first-name">
+                                        Name
+                                    </label>
+                                    <div class="form-control-wrapper">
+                                        <input class="form-control" id="contacts-first-name" required="required" name="first_name" type="text">
+                                    </div>
+                                    <div class="error-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="contacts-last-name">
+                                        Surname
+                                    </label>
+                                    <div class="form-control-wrapper">
+                                        <input class="form-control" id="contacts-last-name" required="required" name="last_name" type="text">
+                                    </div>
+                                    <div class="error-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="contacts-email">
+                                        Email
+                                    </label>
+                                    <div class="form-control-wrapper">
+                                        <input class="form-control" id="contacts-email" required="required" name="email" type="text">
+                                    </div>
+                                    <div class="error-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="contacts-phone">
+                                        Telephone
+                                    </label>
+                                    <div class="form-control-wrapper">
+                                        <input class="form-control" id="contacts-phone" required="required" name="phone" type="text">
+                                    </div>
+                                    <div class="error-wrapper"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="#contacts-message">
+                                        Your request
+                                    </label>
+                                    <div class="form-control-wrapper">
+                                        <textarea id="contacts-message" class="form-control" rows="5" required="required" name="message" cols="50"></textarea>
+                                    </div>
+                                    <div class="error-wrapper"></div>
+                                </div>
+                            </div>                            
+                            <div class="col-12 col-sm-6 col-md-12 col-lg-4 col-xl-6">
+                                <div class="form-group d-flex align-items-center justify-content-end h-100">
+                                    <button type="submit" class="button effect-2 effect-color-1 effect-background-3">
+                                        SUBMIT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="box-wrapper dark">
 
-<p>Use this page to detail your gyms contacts.</p>
+                    <div class="info-box">
+                        <h1 class="header-1">
+                            Contacts
+                        </h1>
+                        <ul class="info-list list-unstyled">
+                            <li class="info">
+
+                            </li>
+                            <li class="info">
+                                Tel:<a href="tel:0700 44 044" title="#" class="basic-link">
+                                    0700 44 044
+                                </a>
+                            </li>
+                            <li class="info">
+                                e-mail:<a href="mailto:corporative@fitgym.com" title="#" class="basic-link">
+                                    corporative@fitgym.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h6 class="header-1">
+                            Working hours
+                        </h6>
+                        <ul class="info-list list-unstyled">
+                            <li class="info">
+                                07:00 - 23:00
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="social-links d-flex justify-content-center flex-wrap">
+                            <a class="button" href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                            <a class="button" href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a class="button" href="https://www.youtube.com/" title="Youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

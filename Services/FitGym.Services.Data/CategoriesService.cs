@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using FitGym.Data.Common.Repositories;
     using FitGym.Data.Models;
     using FitGym.Services.Data.Interfaces;
@@ -15,6 +15,21 @@
         public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
         {
             this.categoriesRepository = categoriesRepository;
+        }
+
+        public async Task<int> CreateAsync(string name, string title, string description, string imageUrl)
+        {
+            var category = new Category
+            {
+                Name = name,
+                Title = title,
+                Description = description,
+                ImageUrl = imageUrl,
+            };
+
+            await this.categoriesRepository.AddAsync(category);
+            await this.categoriesRepository.SaveChangesAsync();
+            return category.Id;
         }
 
         public IEnumerable<T> GetAll<T>(int? count = null)

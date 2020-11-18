@@ -1,5 +1,7 @@
 ﻿namespace FitGym.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using FitGym.Services.Data;
     using FitGym.Services.Data.Interfaces;
     using FitGym.Web.ViewModels.Categories;
@@ -36,7 +38,14 @@
         [HttpPost]
         public async Task<IActionResult> Create(CategoryCreateInputModel input)
         {
-            //TODO IMPLEMENT POST METHOD
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var categoryId = await this.categoriesService.CreateAsync(input.Name, input.Title, input.Description, input.ImageUrl);
+            this.TempData["InfoMessage"] = "The category is created!";
+            return this.RedirectToAction("Index", "Forums");
         }
     }
 }
