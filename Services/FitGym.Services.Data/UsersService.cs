@@ -16,11 +16,20 @@
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
 
-        public UsersService(IDeletableEntityRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager)
+        public UsersService(IDeletableEntityRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             this.userRepository = userRepository;
             this.userManager = userManager;
+            this.roleManager = roleManager;
+        }
+
+        public async Task<List<ApplicationUser>> GetAllTrainersAsync()
+        {
+            var users = await this.userManager.GetUsersInRoleAsync("Trainer");
+
+            return users.ToList();
         }
 
         public async Task<IEnumerable<T>> GetAllUsersAsync<T>(string trainerId = null)
