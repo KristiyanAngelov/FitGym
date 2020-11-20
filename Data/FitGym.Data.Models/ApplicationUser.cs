@@ -3,7 +3,6 @@ namespace FitGym.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
     using FitGym.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -27,6 +26,14 @@ namespace FitGym.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Description { get; set; }
+
+        public string ProfilePictureUrl { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
