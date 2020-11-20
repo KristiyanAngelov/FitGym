@@ -44,8 +44,8 @@
             return this.View(viewModel);
         }
 
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Create(int id, PostCreateInputModel input)
         {
             var user = await this.userManager.GetUserAsync(this.User);
@@ -60,6 +60,7 @@
             return this.RedirectToAction(nameof(this.ById), new { id = postId });
         }
 
+        [AllowAnonymous]
         public IActionResult AllPostsInCategory(int id)
         {
             var viewModel = new AllPostsInCategoryViewModel

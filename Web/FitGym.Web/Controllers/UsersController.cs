@@ -1,16 +1,16 @@
 ﻿namespace FitGym.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
+    using FitGym.Common;
     using FitGym.Data.Models;
     using FitGym.Services.Data.Interfaces;
-    using FitGym.Web.ViewModels.Roles;
     using FitGym.Web.ViewModels.Users;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class UsersController : BaseController
     {
         private readonly IUsersService usersService;

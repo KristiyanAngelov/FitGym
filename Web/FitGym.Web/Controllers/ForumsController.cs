@@ -4,6 +4,7 @@
     using FitGym.Services.Data;
     using FitGym.Services.Data.Interfaces;
     using FitGym.Web.ViewModels.Forum;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class ForumsController : BaseController
@@ -15,6 +16,7 @@
             this.categoriesService = categoriesService;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel

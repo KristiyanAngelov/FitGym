@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
 
     using FitGym.Services.Data.Interfaces;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class TrainersController : BaseController
@@ -13,7 +14,8 @@
         {
             this.usersService = usersService;
         }
-
+        
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var trainers = await this.usersService.GetAllTrainersAsync();
