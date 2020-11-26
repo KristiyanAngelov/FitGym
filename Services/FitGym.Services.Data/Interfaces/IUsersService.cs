@@ -1,5 +1,6 @@
 ﻿namespace FitGym.Services.Data.Interfaces
 {
+    using System.Collections;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -7,14 +8,22 @@
 
     public interface IUsersService
     {
-        public Task<IEnumerable<T>> GetAllUsersAsync<T>(string trainerId = null);
+        public ICollection<T> GetAllUsers<T>(string trainerId = null);
+
+        public ICollection<T> GetAllDeletedUsers<T>(string trainerId = null);
 
         public Task<List<ApplicationUser>> GetAllTrainersAsync();
 
-        public Task<ApplicationUser> GetUserByIdAsync(string id);
+        public ApplicationUser GetUserById(string id);
 
-        public Task<T> GetUserByIdAsync<T>(string id);
+        public T GetUserById<T>(string id);
 
-        public Task<List<string>> GetUserRoles(string id);
+        public Task<List<string>> GetUserRolesAsync(string id);
+
+        public Task DeleteUser(string id);
+
+        public Task HardDeleteUser(string id);
+
+        public Task UndeleteUser(string id);
     }
 }

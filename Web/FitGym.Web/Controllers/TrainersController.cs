@@ -14,7 +14,7 @@
         {
             this.usersService = usersService;
         }
-        
+
         [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {

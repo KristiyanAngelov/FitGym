@@ -1,12 +1,13 @@
 ﻿namespace FitGym.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using FitGym.Data.Models;
     using FitGym.Web.ViewModels.Administration.Dashboard;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
-    public class DashboardController:AdministrationController
+    public class DashboardController : AdministrationController
     {
         private readonly UserManager<ApplicationUser> userManager;
 

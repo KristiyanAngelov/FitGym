@@ -1,5 +1,6 @@
 ﻿namespace FitGym.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using FitGym.Common;
@@ -24,35 +25,25 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<IActionResult> AllUsers()
+        public IActionResult GetById(string id)
         {
-            var viewModel = new AllUsersViewModel
-            {
-                Users = await this.usersService.GetAllUsersAsync<UserViewModel>(),
-            };
-
+            var viewModel = this.usersService.GetUserById<UserViewModel>(id);
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> GetById(string id)
+        public IActionResult GetUser(string id)
         {
-            var viewModel = await this.usersService.GetUserByIdAsync<UserViewModel>(id);
-            return this.View(viewModel);
-        }
-
-        public async Task<IActionResult> GetUser(string id)
-        {
-            return this.View(await this.usersService.GetUserByIdAsync(id));
+            return this.View(this.usersService.GetUserById(id));
         }
 
         public async Task<IActionResult> GetUserRoles(string id)
         {
-            var testUser = await this.usersService.GetUserByIdAsync(id);
-            var roles = await this.usersService.GetUserRoles(id);
+            var user = this.usersService.GetUserById(id);
+            var roles = await this.usersService.GetUserRolesAsync(id);
 
             var viewModel = new UserAndRolesViewModel
             {
-                Email = testUser.Email,
+                Email = user.Email,
                 Roles = roles,
             };
 

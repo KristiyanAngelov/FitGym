@@ -1,6 +1,7 @@
 ﻿namespace FitGym.Services.Data
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -32,31 +33,40 @@
             return users.ToList();
         }
 
-        public async Task<IEnumerable<T>> GetAllUsersAsync<T>(string trainerId = null)
+        public ICollection<T> GetAllUsers<T>(string trainerId = null)
         {
-            return await this.userRepository
+            return this.userRepository
                 .All()
                 .To<T>()
-                .ToListAsync();
+                .ToList();
         }
 
-        public async Task<ApplicationUser> GetUserByIdAsync(string id)
+        public ICollection<T> GetAllDeletedUsers<T>(string trainerId = null)
         {
-            return await this.userRepository
+            return this.userRepository
+                .AllWithDeleted()
+                .Where(x => x.IsDeleted == true)
+                .To<T>()
+                .ToList();
+        }
+
+        public ApplicationUser GetUserById(string id)
+        {
+            return this.userRepository
                 .All()
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .FirstOrDefault(x => x.Id == id);
         }
 
-        public async Task<T> GetUserByIdAsync<T>(string id)
+        public T GetUserById<T>(string id)
         {
-            return await this.userRepository
+            return this.userRepository
                 .All()
                 .Where(x => x.Id == id)
                 .To<T>()
-                .FirstAsync();
+                .First();
         }
 
-        public async Task<List<string>> GetUserRoles(string id)
+        public async Task<List<string>> GetUserRolesAsync(string id)
         {
             var user = await this.userRepository
                 .All()
@@ -64,6 +74,28 @@
             var userRoles = await this.userManager.GetRolesAsync(user);
 
             return userRoles.ToList();
+        }
+
+        public async Task DeleteUser(string id)
+        {
+            var user = this.userRepository.All().FirstOrDefault(x => x.Id == id);
+            this.userRepository.Delete(user);
+            await this.userRepository.SaveChangesAsync();
+        }
+
+        public async Task HardDeleteUser(string id)
+        {
+            var user = this.userRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
+            //await this.userManager.DeleteAsync(user);
+            this.userRepository.HardDelete(user);
+            await this.userRepository.SaveChangesAsync();
+        }
+
+        public async Task UndeleteUser(string id)
+        {
+            var user = this.userRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
+            this.userRepository.Undelete(user);
+            await this.userRepository.SaveChangesAsync();
         }
     }
 }
