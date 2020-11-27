@@ -1,15 +1,10 @@
-﻿using FitGym.Data.Models;
-using FitGym.Services.Data.Contracts;
-using FitGym.Services.Data.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FitGym.Web.Areas.Administration.Controllers
+﻿namespace FitGym.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using FitGym.Services.Data.Contracts;
+    using Microsoft.AspNetCore.Mvc;
+
     public class RolesController : AdministrationController
     {
         private readonly IRolesService rolesService;

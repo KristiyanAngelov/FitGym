@@ -86,7 +86,6 @@
         public async Task HardDeleteUser(string id)
         {
             var user = this.userRepository.AllWithDeleted().FirstOrDefault(x => x.Id == id);
-            //await this.userManager.DeleteAsync(user);
             this.userRepository.HardDelete(user);
             await this.userRepository.SaveChangesAsync();
         }

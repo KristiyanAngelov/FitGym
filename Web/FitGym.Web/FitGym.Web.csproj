@@ -46,4 +46,8 @@
     <ProjectReference Include="..\FitGym.Web.Infrastructure\FitGym.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\FitGym.Web.ViewModels\FitGym.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
 </Project>
