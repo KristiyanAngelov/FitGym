@@ -1,0 +1,45 @@
+﻿@model FitGym.Web.ViewModels.Workouts.WorkoutCreateInputModel
+@{
+    this.ViewData["Title"] = "Create new workout";
+}
+
+@using FitGym.Common
+@using Microsoft.AspNetCore.Identity
+@using FitGym.Data.Models
+
+<h1>@this.ViewData["Title"]</h1>
+
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    var trainers = await this.UserManager.GetUsersInRoleAsync("Trainer");
+}
+
+<form method="post" asp-action="CreateWorkout">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="DateAndTime"></label>
+        <input asp-for="DateAndTime" class="form-control" />
+        <span asp-validation-for="DateAndTime" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="PrivateTraining"></label>
+        <input asp-for="PrivateTraining" class="form-control" />
+        <span asp-validation-for="PrivateTraining" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="TrainersIds"></label>
+        <select asp-for="TrainersIds" class="form-control">
+            @foreach (var trainer in trainers)
+            {
+                <option value="@trainer.Id">@trainer.FirstName @trainer.LastName</option>
+            }
+        </select>
+        <span asp-validation-for="TrainersIds" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>

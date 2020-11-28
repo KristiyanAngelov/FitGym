@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FitGym.Data.Common\FitGym.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FitGym.Data.Models\FitGym.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\FitGym.Web.ViewModels\FitGym.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FitGym.Services.Mapping\FitGym.Services.Mapping.csproj" />
   </ItemGroup>
 

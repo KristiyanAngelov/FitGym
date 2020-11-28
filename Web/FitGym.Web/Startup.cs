@@ -70,6 +70,8 @@
             services.AddTransient<IPostsService, PostsService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IRolesService, RolesService>();
+            services.AddTransient<IWorkoutsService, WorkoutsService>();
+            services.AddTransient<IExercisesService, ExercisesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

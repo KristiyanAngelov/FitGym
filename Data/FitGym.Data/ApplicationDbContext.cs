@@ -30,6 +30,10 @@
 
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<ClientTrainer> ClientsTrainers { get; set; }
+
+        public DbSet<Workout> Workouts { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -57,6 +61,25 @@
             this.ConfigureUserIdentityRelations(builder);
 
             EntityIndexesConfiguration.Configure(builder);
+
+            // Configure table relations
+            builder
+                .Entity<ClientTrainer>()
+                .HasKey(x => new { x.ClientId, x.TrainerId });
+
+            builder
+                .Entity<ClientTrainer>()
+                .HasOne(ct => ct.Client)
+                .WithMany(c => c.Trainers)
+                .HasForeignKey(ct => ct.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ClientTrainer>()
+                .HasOne(ct => ct.Trainer)
+                .WithMany(t => t.Clients)
+                .HasForeignKey(ct => ct.TrainerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 

@@ -1,0 +1,27 @@
+﻿@model FitGym.Web.ViewModels.Exercises.AllExercisesViewModel
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Video</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+    @foreach (var exercise in Model.Exercises)
+    {
+        <tbody>
+            <tr>
+                <td>@exercise.Id</td>
+                <td>@exercise.Name</td>
+                <td>
+                    <a href="@exercise.VideoUrl">Video</a>
+                </td>
+                <td>@exercise.Difficulty</td>
+                <td>@exercise.Type</td>
+            </tr>
+        </tbody>
+    }
+</table>

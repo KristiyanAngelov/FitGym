@@ -12,16 +12,29 @@
             this.Comments = new HashSet<Comment>();
         }
 
-        public string Title { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string Title
+        {
+            get; set;
+        }
 
-        public string Content { get; set; }
+        [Required]
+        public string Content
+        {
+            get; set;
+        }
 
         [Required]
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
-        public int CategoryId { get; set; }
+        [Required]
+        public int CategoryId
+        {
+            get; set;
+        }
 
         public virtual Category Category { get; set; }
 

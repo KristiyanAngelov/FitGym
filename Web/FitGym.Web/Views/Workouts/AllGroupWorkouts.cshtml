@@ -1,0 +1,8 @@
+﻿@model FitGym.Web.ViewModels.Workouts.AllWorkoutsViewModel
+
+@foreach (var workout in Model.Workouts)
+{
+    <p>@workout.Name</p>
+    <p>@workout.DateAndTime</p>
+    <p>@workout.ClientsCount</p>
+}
