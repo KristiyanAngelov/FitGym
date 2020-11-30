@@ -35,14 +35,6 @@
             return exercise.Id;
         }
 
-        public Exercise FindByID(string exerciseId)
-        {
-            return this.exerciseRepository
-                .All()
-                .Where(x => x.Id == exerciseId)
-                .FirstOrDefault();
-        }
-
         public ICollection<T> GetAllExercises<T>()
         {
             return this.exerciseRepository
@@ -50,13 +42,5 @@
                 .To<T>()
                 .ToList();
         }
-
-        public ICollection<Exercise> GetAllExercises()
-        {
-            return this.exerciseRepository
-                .All()
-                .ToList();
-        }
-
     }
 }

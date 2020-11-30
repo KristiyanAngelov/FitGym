@@ -6,17 +6,15 @@
 @using FitGym.Common
 @using Microsoft.AspNetCore.Identity
 @using FitGym.Data.Models
-@using FitGym.Services.Data.Interfaces;
 
 <h1>@this.ViewData["Title"]</h1>
 
 @inject UserManager<ApplicationUser> UserManager
-@inject IExercisesService exercisesService
 
 @{
     var trainers = await this.UserManager.GetUsersInRoleAsync("Trainer");
-    var exercises = this.exercisesService.GetAllExercises();
 }
+
 <form method="post" asp-action="CreateWorkout">
     <div>
         <label asp-for="Name"></label>
@@ -42,16 +40,6 @@
             }
         </select>
         <span asp-validation-for="TrainersIds" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="ExercisesIds"></label>
-        <select asp-for="ExercisesIds" class="form-control">
-            @foreach (var exercise in exercises)
-            {
-                <option value="@exercise.Id">@exercise.Name</option>
-            }
-        </select>
-        <span asp-validation-for="ExercisesIds" class="text-danger"></span>
     </div>
     <input type="submit" class="btn btn-primary">
 </form>

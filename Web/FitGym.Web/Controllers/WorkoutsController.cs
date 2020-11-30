@@ -1,13 +1,11 @@
 ﻿namespace FitGym.Web.Controllers
 {
-    using System.Threading.Tasks;
-
     using FitGym.Common;
     using FitGym.Services.Data.Interfaces;
-    using FitGym.Web.ViewModels.Exercises;
     using FitGym.Web.ViewModels.Workouts;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Threading.Tasks;
 
     public class WorkoutsController : BaseController
     {
@@ -43,7 +41,7 @@
                 return this.View(input);
             }
 
-            var workoutId = await this.workoutsService.CreateAsync(input.Name, input.DateAndTime, input.PrivateTraining, input.TrainersIds, input.ExercisesIds);
+            var workoutId = await this.workoutsService.CreateAsync(input.Name, input.DateAndTime, input.PrivateTraining, input.TrainersIds);
             this.TempData["InfoMessage"] = "The workout is created!";
             return this.RedirectToAction("AllGroupWorkouts");
         }

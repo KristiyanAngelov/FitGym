@@ -1,13 +1,13 @@
-﻿namespace FitGym.Web.Controllers
+﻿using FitGym.Services.Data.Interfaces;
+using FitGym.Web.ViewModels.Exercises;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FitGym.Web.Controllers
 {
-    using System.Threading.Tasks;
-
-    using FitGym.Common;
-    using FitGym.Services.Data.Interfaces;
-    using FitGym.Web.ViewModels.Exercises;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-
     public class ExercisesController : BaseController
     {
         private readonly IExercisesService exercisesService;
@@ -27,13 +27,11 @@
             return this.View(viewModel);
         }
 
-        [Authorize(Roles = GlobalConstants.AdminAndTrainerRolesRoleName)]
         public IActionResult Create()
         {
             return this.View();
         }
 
-        [Authorize(Roles = GlobalConstants.AdminAndTrainerRolesRoleName)]
         [HttpPost]
         public async Task<IActionResult> Create(ExerciseCreateInputModel input)
         {

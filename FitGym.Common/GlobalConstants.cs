@@ -9,7 +9,5 @@
         public const string TrainerRoleName = "Trainer";
 
         public const string ClientRoleName = "Client";
-
-        public const string AdminAndTrainerRolesRoleName = "Admin, Trainer";
     }
 }
