@@ -23,18 +23,37 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="About">About FitGym</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Workouts" asp-action="AllGroupWorkouts">Group Workouts</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Trainers" asp-action="GetAll">Trainers</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Contacts">Contacts</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Forums" asp-action="Index">Forum</a>
                         </li>
+
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.TrainerRoleName))
+                        {
+                            <li class="dropdown">
+                                <button class="dropbtn">Dropdown</button>
+                                <div class="dropdown-content">
+                                    <a class="nav-link text-dark" asp-controller="Exercises" asp-action="All">All exercises</a>
+                                    <a class="nav-link text-dark" asp-controller="Exercises" asp-action="Create">Create exercise</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Workouts" asp-action="CreateWorkout">Create Workout</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
