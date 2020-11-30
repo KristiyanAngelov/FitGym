@@ -12,7 +12,7 @@
         public WorkoutCreateInputModel()
         {
             this.TrainersIds = new HashSet<string>();
-            //this.Exercises = new HashSet<Exercise>();
+            this.ExercisesIds = new HashSet<string>();
         }
 
         [Required]
@@ -27,6 +27,6 @@
 
         public ICollection<string> TrainersIds { get; set; }
 
-        //public ICollection<Exercise> Exercises { get; set; }
+        public ICollection<string> ExercisesIds { get; set; }
     }
 }

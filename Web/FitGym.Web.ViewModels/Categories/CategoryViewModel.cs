@@ -1,8 +1,9 @@
 ﻿namespace FitGym.Web.ViewModels.Categories
 {
+    using System.Collections.Generic;
+
     using FitGym.Data.Models;
     using FitGym.Services.Mapping;
-    using System.Collections.Generic;
 
     public class CategoryViewModel : IMapFrom<Category>
     {
