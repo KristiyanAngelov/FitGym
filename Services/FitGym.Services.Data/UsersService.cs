@@ -37,6 +37,7 @@
         {
             return this.userRepository
                 .All()
+                .OrderBy(x => x.CreatedOn)
                 .To<T>()
                 .ToList();
         }
