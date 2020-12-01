@@ -7,9 +7,11 @@
 
     public interface IUsersService
     {
-        public ICollection<T> GetAllUsers<T>(string trainerId = null);
+        public ICollection<ApplicationUser> GetAllUsers();
 
-        public ICollection<T> GetAllDeletedUsers<T>(string trainerId = null);
+        public ICollection<T> GetAllUsers<T>();
+
+        public ICollection<T> GetAllDeletedUsers<T>();
 
         public Task<List<ApplicationUser>> GetAllTrainersAsync();
 

@@ -27,7 +27,15 @@
             this.exercisesService = exercisesService;
         }
 
-        public async Task<int> CreateAsync(string name, DateTime startTime, DateTime endTime, bool privateTraining, string notes, ICollection<string> trainersIds, ICollection<string> exercisesIds)
+        public async Task<int> CreateAsync(
+            string name,
+            DateTime startTime,
+            DateTime endTime,
+            bool privateTraining,
+            string notes,
+            ICollection<string> trainersIds,
+            ICollection<string> exercisesIds,
+            ICollection<string> clientsIds)
         {
             var workout = new Workout
             {
@@ -60,6 +68,18 @@
                     Exercise = exercise,
                     ExerciseId = exercise.Id,
                     Workout = workout,
+                    WorkoutId = workout.Id,
+                });
+            }
+
+            foreach (var clientId in clientsIds)
+            {
+                var client = await this.userManager.FindByIdAsync(clientId);
+                workout.Clients.Add(new ClientWorkout
+                {
+                    Client = client,
+                    ClientId = clientId,
+                    CWorkout = workout,
                     WorkoutId = workout.Id,
                 });
             }

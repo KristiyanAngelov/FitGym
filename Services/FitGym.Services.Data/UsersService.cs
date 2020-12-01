@@ -17,13 +17,11 @@
     {
         private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<ApplicationRole> roleManager;
 
-        public UsersService(IDeletableEntityRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
+        public UsersService(IDeletableEntityRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager)
         {
             this.userRepository = userRepository;
             this.userManager = userManager;
-            this.roleManager = roleManager;
         }
 
         public async Task<List<ApplicationUser>> GetAllTrainersAsync()
@@ -33,7 +31,15 @@
             return users.ToList();
         }
 
-        public ICollection<T> GetAllUsers<T>(string trainerId = null)
+        public ICollection<ApplicationUser> GetAllUsers()
+        {
+            return this.userRepository
+                .All()
+                .OrderBy(x => x.CreatedOn)
+                .ToList();
+        }
+
+        public ICollection<T> GetAllUsers<T>()
         {
             return this.userRepository
                 .All()
@@ -42,7 +48,7 @@
                 .ToList();
         }
 
-        public ICollection<T> GetAllDeletedUsers<T>(string trainerId = null)
+        public ICollection<T> GetAllDeletedUsers<T>()
         {
             return this.userRepository
                 .AllWithDeleted()

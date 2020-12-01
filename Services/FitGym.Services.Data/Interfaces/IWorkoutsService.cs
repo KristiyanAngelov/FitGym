@@ -8,6 +8,6 @@
     {
         public ICollection<T> GetAllGroupWorkouts<T>();
 
-        Task<int> CreateAsync(string name, DateTime startTime, DateTime endTime, bool privateTraining, string notes, ICollection<string> trainersIds, ICollection<string> exercisesIds);
+        Task<int> CreateAsync(string name, DateTime startTime, DateTime endTime, bool privateTraining, string notes, ICollection<string> trainersIds, ICollection<string> exercisesIds, ICollection<string> clientsIds);
     }
 }

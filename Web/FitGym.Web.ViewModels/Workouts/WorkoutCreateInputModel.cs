@@ -13,6 +13,7 @@
         {
             this.TrainersIds = new HashSet<string>();
             this.ExercisesIds = new HashSet<string>();
+            this.ClientsIds = new HashSet<string>();
         }
 
         [Required]
@@ -35,5 +36,7 @@
         public ICollection<string> TrainersIds { get; set; }
 
         public ICollection<string> ExercisesIds { get; set; }
+
+        public ICollection<string> ClientsIds { get; set; }
     }
 }
