@@ -34,7 +34,11 @@
                     UserName = user.Email,
                     Email = user.Email,
                     PasswordHash = user.Password,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    ProfilePictureUrl = user.ProfilePicture,
                 });
+
             }
         }
     }

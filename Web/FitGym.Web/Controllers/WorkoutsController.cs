@@ -43,7 +43,7 @@
                 return this.View(input);
             }
 
-            var workoutId = await this.workoutsService.CreateAsync(input.Name, input.DateAndTime, input.PrivateTraining, input.TrainersIds, input.ExercisesIds);
+            var workoutId = await this.workoutsService.CreateAsync(input.Name, input.StartTime, input.EndTime, input.PrivateTraining, input.Notes, input.TrainersIds, input.ExercisesIds);
             this.TempData["InfoMessage"] = "The workout is created!";
             return this.RedirectToAction("AllGroupWorkouts");
         }

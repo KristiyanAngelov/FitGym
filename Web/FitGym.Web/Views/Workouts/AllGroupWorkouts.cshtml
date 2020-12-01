@@ -3,6 +3,11 @@
 @foreach (var workout in Model.Workouts)
 {
     <p>@workout.Name</p>
-    <p>@workout.DateAndTime</p>
+    <p>@workout.StartTime</p>
+    <p>@workout.EndTime</p>
     <p>@workout.ClientsCount</p>
+    foreach (var name in workout.TrainersNames)
+    {
+        <p>@name</p>
+    }
 }

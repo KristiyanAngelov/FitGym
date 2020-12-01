@@ -24,9 +24,19 @@
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div>
-        <label asp-for="DateAndTime"></label>
-        <input asp-for="DateAndTime" class="form-control" />
-        <span asp-validation-for="DateAndTime" class="text-danger"></span>
+        <label asp-for="Notes"></label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="StartTime"></label>
+        <input asp-for="StartTime" class="form-control" />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="EndTime"></label>
+        <input asp-for="EndTime" class="form-control" />
+        <span asp-validation-for="EndTime" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="PrivateTraining"></label>

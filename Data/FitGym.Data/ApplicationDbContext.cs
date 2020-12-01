@@ -32,7 +32,13 @@
 
         public DbSet<ClientTrainer> ClientsTrainers { get; set; }
 
+        public DbSet<TrainerWorkout> TrainerWorkouts { get; set; }
+
+        public DbSet<ClientWorkout> ClientWorkouts { get; set; }
+
         public DbSet<Workout> Workouts { get; set; }
+
+        public DbSet<Exercise> Execises { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -79,6 +85,60 @@
                 .HasOne(ct => ct.Trainer)
                 .WithMany(t => t.Clients)
                 .HasForeignKey(ct => ct.TrainerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ClientWorkout>()
+                .HasKey(x => new { x.ClientId, x.WorkoutId });
+
+            builder
+                .Entity<ClientWorkout>()
+                .HasOne(uw => uw.Client)
+                .WithMany(u => u.ClientWorkouts)
+                .HasForeignKey(uw => uw.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ClientWorkout>()
+                .HasOne(cw => cw.CWorkout)
+                .WithMany(w => w.Clients)
+                .HasForeignKey(cw => cw.WorkoutId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<TrainerWorkout>()
+                .HasKey(x => new { x.TrainerId, x.WorkoutId });
+
+            builder
+                .Entity<TrainerWorkout>()
+                .HasOne(tw => tw.Trainer)
+                .WithMany(t => t.TrainerWorkouts)
+                .HasForeignKey(tw => tw.TrainerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<TrainerWorkout>()
+                .HasOne(tw => tw.TWorkout)
+                .WithMany(w => w.Trainers)
+                .HasForeignKey(tw => tw.WorkoutId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<WorkoutExercise>()
+                .HasKey(x => new { x.WorkoutId, x.ExerciseId });
+
+            builder
+                .Entity<WorkoutExercise>()
+                .HasOne(we => we.Workout)
+                .WithMany(w => w.Exercises)
+                .HasForeignKey(we => we.WorkoutId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<WorkoutExercise>()
+                .HasOne(we => we.Exercise)
+                .WithMany(e => e.Workouts)
+                .HasForeignKey(we => we.ExerciseId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();

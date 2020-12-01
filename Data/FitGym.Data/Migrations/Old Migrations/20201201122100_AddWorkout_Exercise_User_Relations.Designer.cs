@@ -4,14 +4,16 @@ using FitGym.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FitGym.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201201122100_AddWorkout_Exercise_User_Relations")]
+    partial class AddWorkout_Exercise_User_Relations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -553,7 +555,7 @@ namespace FitGym.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("FitGym.Data.Models.Workout", "CWorkout")
+                    b.HasOne("FitGym.Data.Models.Workout", "Workout")
                         .WithMany("Clients")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -561,7 +563,7 @@ namespace FitGym.Data.Migrations
 
                     b.Navigation("Client");
 
-                    b.Navigation("CWorkout");
+                    b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.Comment", b =>
@@ -614,7 +616,7 @@ namespace FitGym.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("FitGym.Data.Models.Workout", "TWorkout")
+                    b.HasOne("FitGym.Data.Models.Workout", "Workout")
                         .WithMany("Trainers")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -622,7 +624,7 @@ namespace FitGym.Data.Migrations
 
                     b.Navigation("Trainer");
 
-                    b.Navigation("TWorkout");
+                    b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.WorkoutExercise", b =>

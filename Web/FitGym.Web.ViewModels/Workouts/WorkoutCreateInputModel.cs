@@ -20,7 +20,14 @@
         public string Name { get; set; }
 
         [Required]
-        public DateTime DateAndTime { get; set; }
+        public DateTime StartTime { get; set; }
+
+        [Required]
+        public DateTime EndTime { get; set; }
+
+        [Required]
+        [MaxLength(300)]
+        public string Notes { get; set; }
 
         [Required]
         public bool PrivateTraining { get; set; }

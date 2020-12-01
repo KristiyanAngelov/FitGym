@@ -17,6 +17,7 @@
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
             await SeedRoleAsync(userManager, GlobalConstants.AdministratorRoleName, "admin@test.com");
+            await SeedRoleAsync(userManager, GlobalConstants.TrainerRoleName, "admin@test.com");
             await SeedRoleAsync(userManager, GlobalConstants.TrainerRoleName, "trainer@test.com");
             await SeedRoleAsync(userManager, GlobalConstants.ClientRoleName, "client@test.com");
         }

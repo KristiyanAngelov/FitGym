@@ -10,9 +10,9 @@
     {
         public Workout()
         {
-            this.Trainers = new HashSet<ApplicationUser>();
-            this.Clients = new HashSet<ApplicationUser>();
-            this.Exercises = new HashSet<Exercise>();
+            this.Trainers = new HashSet<TrainerWorkout>();
+            this.Clients = new HashSet<ClientWorkout>();
+            this.Exercises = new HashSet<WorkoutExercise>();
         }
 
         [Required]
@@ -20,15 +20,21 @@
         public string Name { get; set; }
 
         [Required]
-        public DateTime DateAndTime { get; set; }
+        public DateTime StartTime { get; set; }
+
+        [Required]
+        public DateTime EndTime { get; set; }
+
+        [MaxLength(300)]
+        public string Notes { get; set; }
 
         [Required]
         public bool PrivateTraining { get; set; }
 
-        public virtual ICollection<ApplicationUser> Trainers { get; set; }
+        public virtual ICollection<TrainerWorkout> Trainers { get; set; }
 
-        public virtual ICollection<ApplicationUser> Clients { get; set; }
+        public virtual ICollection<ClientWorkout> Clients { get; set; }
 
-        public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual ICollection<WorkoutExercise> Exercises { get; set; }
     }
 }

@@ -46,5 +46,9 @@ namespace FitGym.Data.Models
         public virtual ICollection<ClientTrainer> Trainers { get; set; }
 
         public virtual ICollection<ClientTrainer> Clients { get; set; }
+
+        public virtual ICollection<TrainerWorkout> TrainerWorkouts { get; set; }
+
+        public virtual ICollection<ClientWorkout> ClientWorkouts { get; set; }
     }
 }

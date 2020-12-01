@@ -12,6 +12,7 @@
         public Exercise()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Workouts = new HashSet<WorkoutExercise>();
         }
 
         [Required]
@@ -24,5 +25,7 @@
         public Difficulty Difficulty { get; set; }
 
         public ExerciseType Type { get; set; }
+
+        public virtual ICollection<WorkoutExercise> Workouts { get; set; }
     }
 }

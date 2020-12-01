@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitGym.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201127170629_TrainingEntityVirtualProperties")]
-    partial class TrainingEntityVirtualProperties
+    [Migration("20201201124235_SecondInitialCreateAfterProblem")]
+    partial class SecondInitialCreateAfterProblem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,12 +131,6 @@ namespace FitGym.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TrainingId1")
-                        .HasColumnType("int");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -155,10 +149,6 @@ namespace FitGym.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("TrainingId");
-
-                    b.HasIndex("TrainingId1");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -214,6 +204,21 @@ namespace FitGym.Data.Migrations
                     b.HasIndex("TrainerId");
 
                     b.ToTable("ClientsTrainers");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.ClientWorkout", b =>
+                {
+                    b.Property<string>("ClientId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WorkoutId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClientId", "WorkoutId");
+
+                    b.HasIndex("WorkoutId");
+
+                    b.ToTable("ClientWorkouts");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.Comment", b =>
@@ -285,9 +290,6 @@ namespace FitGym.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int?>("TrainingId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -299,9 +301,7 @@ namespace FitGym.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("TrainingId");
-
-                    b.ToTable("Exercise");
+                    b.ToTable("Execises");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.Post", b =>
@@ -315,6 +315,7 @@ namespace FitGym.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -330,7 +331,9 @@ namespace FitGym.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -347,7 +350,22 @@ namespace FitGym.Data.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("FitGym.Data.Models.Training", b =>
+            modelBuilder.Entity("FitGym.Data.Models.TrainerWorkout", b =>
+                {
+                    b.Property<string>("TrainerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WorkoutId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TrainerId", "WorkoutId");
+
+                    b.HasIndex("WorkoutId");
+
+                    b.ToTable("TrainerWorkouts");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.Workout", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -357,10 +375,10 @@ namespace FitGym.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateAndTime")
+                    b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedOn")
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -370,16 +388,40 @@ namespace FitGym.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<bool>("PrivateTraining")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Trainings");
+                    b.ToTable("Workouts");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.WorkoutExercise", b =>
+                {
+                    b.Property<int>("WorkoutId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ExerciseId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("WorkoutId", "ExerciseId");
+
+                    b.HasIndex("ExerciseId");
+
+                    b.ToTable("WorkoutExercise");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -486,17 +528,6 @@ namespace FitGym.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("FitGym.Data.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("FitGym.Data.Models.Training", null)
-                        .WithMany("Clients")
-                        .HasForeignKey("TrainingId");
-
-                    b.HasOne("FitGym.Data.Models.Training", null)
-                        .WithMany("Trainers")
-                        .HasForeignKey("TrainingId1");
-                });
-
             modelBuilder.Entity("FitGym.Data.Models.ClientTrainer", b =>
                 {
                     b.HasOne("FitGym.Data.Models.ApplicationUser", "Client")
@@ -514,6 +545,25 @@ namespace FitGym.Data.Migrations
                     b.Navigation("Client");
 
                     b.Navigation("Trainer");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.ClientWorkout", b =>
+                {
+                    b.HasOne("FitGym.Data.Models.ApplicationUser", "Client")
+                        .WithMany("ClientWorkouts")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FitGym.Data.Models.Workout", "CWorkout")
+                        .WithMany("Clients")
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("CWorkout");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.Comment", b =>
@@ -539,13 +589,6 @@ namespace FitGym.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FitGym.Data.Models.Exercise", b =>
-                {
-                    b.HasOne("FitGym.Data.Models.Training", null)
-                        .WithMany("Exercises")
-                        .HasForeignKey("TrainingId");
-                });
-
             modelBuilder.Entity("FitGym.Data.Models.Post", b =>
                 {
                     b.HasOne("FitGym.Data.Models.Category", "Category")
@@ -563,6 +606,44 @@ namespace FitGym.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.TrainerWorkout", b =>
+                {
+                    b.HasOne("FitGym.Data.Models.ApplicationUser", "Trainer")
+                        .WithMany("TrainerWorkouts")
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FitGym.Data.Models.Workout", "TWorkout")
+                        .WithMany("Trainers")
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Trainer");
+
+                    b.Navigation("TWorkout");
+                });
+
+            modelBuilder.Entity("FitGym.Data.Models.WorkoutExercise", b =>
+                {
+                    b.HasOne("FitGym.Data.Models.Exercise", "Exercise")
+                        .WithMany("Workouts")
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FitGym.Data.Models.Workout", "Workout")
+                        .WithMany("Exercises")
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Exercise");
+
+                    b.Navigation("Workout");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -622,11 +703,15 @@ namespace FitGym.Data.Migrations
 
                     b.Navigation("Clients");
 
+                    b.Navigation("ClientWorkouts");
+
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
 
                     b.Navigation("Trainers");
+
+                    b.Navigation("TrainerWorkouts");
                 });
 
             modelBuilder.Entity("FitGym.Data.Models.Category", b =>
@@ -634,12 +719,17 @@ namespace FitGym.Data.Migrations
                     b.Navigation("Posts");
                 });
 
+            modelBuilder.Entity("FitGym.Data.Models.Exercise", b =>
+                {
+                    b.Navigation("Workouts");
+                });
+
             modelBuilder.Entity("FitGym.Data.Models.Post", b =>
                 {
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("FitGym.Data.Models.Training", b =>
+            modelBuilder.Entity("FitGym.Data.Models.Workout", b =>
                 {
                     b.Navigation("Clients");
 

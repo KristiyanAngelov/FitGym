@@ -1,7 +1,9 @@
 ﻿namespace FitGym.Web.ViewModels.Users
 {
     using System.Collections.Generic;
+    using System.Linq;
 
+    using AutoMapper;
     using FitGym.Data.Models;
     using FitGym.Services.Mapping;
     using Microsoft.AspNetCore.Identity;
