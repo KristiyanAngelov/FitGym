@@ -1,13 +1,28 @@
 ﻿@model FitGym.Web.ViewModels.Workouts.AllWorkoutsViewModel
 
-@foreach (var workout in Model.Workouts)
-{
-    <p>@workout.Name</p>
-    <p>@workout.StartTime</p>
-    <p>@workout.EndTime</p>
-    <p>@workout.ClientsCount</p>
-    foreach (var name in workout.TrainersNames)
+<div class="row">
+    @foreach (var workout in Model.Workouts)
     {
-        <p>@name</p>
+        <div class="col-sm-6 media">
+            <div class="row">
+                <h1>@workout.Name</h1>
+            </div>
+            <div class="row">
+                <h3>@workout.StartTime</h3>
+            </div>
+            <div class="row">
+                <h3>@workout.EndTime</h3>
+            </div>
+            <div class="row">
+                <p>Number of joined people : @workout.ClientsCount</p>
+            </div>
+            <div class="row">
+
+                @foreach (var name in workout.TrainersNames)
+                {
+                    <p>Trainer : @name</p>
+                }
+            </div>
+        </div>
     }
-}
+</div>

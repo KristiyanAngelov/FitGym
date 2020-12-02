@@ -9,7 +9,7 @@
     @foreach (var category in Model.Categories)
     {
         <div class="col-md-6 media">
-            <img src="@category.ImageUrl" width="100" class="img-fluid" alt="@category.Title">&nbsp;
+            <img src="@category.ImageUrl" width="200" class="img-fluid" alt="@category.Title">&nbsp;
             <div class="media-body">
                 <h5 class="mt-0">
                     <a asp-controller="Posts" asp-action="AllPostsInCategory" asp-route-id="@category.Id" class="btn-link">@category.Title</a>
@@ -23,3 +23,4 @@
 
     }
 </div>
+                                                                     
