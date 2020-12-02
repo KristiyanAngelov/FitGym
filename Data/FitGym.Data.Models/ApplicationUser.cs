@@ -3,6 +3,7 @@ namespace FitGym.Data.Models
 {
     using System;
     using System.Collections.Generic;
+
     using FitGym.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,8 @@ namespace FitGym.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Trainers = new HashSet<ClientTrainer>();
             this.Clients = new HashSet<ClientTrainer>();
+            this.TrainerWorkouts = new HashSet<TrainerWorkout>();
+            this.ClientWorkouts = new HashSet<ClientWorkout>();
         }
 
         // Audit info

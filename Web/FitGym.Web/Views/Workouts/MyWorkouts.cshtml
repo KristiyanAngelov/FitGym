@@ -1,0 +1,23 @@
+﻿@model FitGym.Web.ViewModels.Workouts.MyWorkoutsViewModel
+
+@if (Model.MyClientWorkouts.Any())
+{
+    <div>
+        <h1>Client</h1>
+        @foreach (var workout in Model.MyClientWorkouts)
+        {
+            <p>@workout.Name</p>
+        }
+    </div>
+}
+
+@if (Model.MyTrainerWorkouts.Any())
+{
+    <div>
+        <h1>Trainer</h1>
+        @foreach (var workout in Model.MyTrainerWorkouts)
+        {
+            <p>@workout.Name</p>
+        }
+    </div>
+}

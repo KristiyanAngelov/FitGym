@@ -1,0 +1,10 @@
+﻿@model FitGym.Data.Models.ApplicationUser
+
+@foreach (var workout in Model.ClientWorkouts)
+{
+    <p>@workout.CWorkout.Name</p>
+}
+@foreach (var workout in Model.TrainerWorkouts)
+{
+    <p>@workout.TWorkout.Name</p>
+}

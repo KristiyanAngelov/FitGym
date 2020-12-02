@@ -61,6 +61,8 @@
         {
             return this.userRepository
                 .All()
+                .Include(cw => cw.ClientWorkouts)
+                .Include(tw => tw.TrainerWorkouts)
                 .FirstOrDefault(x => x.Id == id);
         }
 

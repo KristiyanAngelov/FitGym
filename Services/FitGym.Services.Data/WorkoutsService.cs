@@ -51,37 +51,43 @@
             foreach (var trainerId in trainersIds)
             {
                 var trainer = await this.userManager.FindByIdAsync(trainerId);
-                workout.Trainers.Add(new TrainerWorkout
+                var tworkout = new TrainerWorkout
                 {
                     Trainer = trainer,
                     TrainerId = trainerId,
                     TWorkout = workout,
                     WorkoutId = workout.Id,
-                });
+                };
+                workout.Trainers.Add(tworkout);
+                trainer.TrainerWorkouts.Add(tworkout);
             }
 
             foreach (var exerciseId in exercisesIds)
             {
                 var exercise = this.exercisesService.FindByID(exerciseId);
-                workout.Exercises.Add(new WorkoutExercise
+                var we = new WorkoutExercise
                 {
                     Exercise = exercise,
                     ExerciseId = exercise.Id,
                     Workout = workout,
                     WorkoutId = workout.Id,
-                });
+                };
+                workout.Exercises.Add(we);
+                exercise.Workouts.Add(we);
             }
 
             foreach (var clientId in clientsIds)
             {
                 var client = await this.userManager.FindByIdAsync(clientId);
-                workout.Clients.Add(new ClientWorkout
+                var cworkout = new ClientWorkout
                 {
                     Client = client,
                     ClientId = clientId,
                     CWorkout = workout,
                     WorkoutId = workout.Id,
-                });
+                };
+                workout.Clients.Add(cworkout);
+                client.ClientWorkouts.Add(cworkout);
             }
 
             await this.workoutsRepository.SaveChangesAsync();
@@ -95,6 +101,32 @@
                 .Where(x => x.PrivateTraining == false)
                 .To<T>()
                 .ToList();
+        }
+
+        public async Task<ICollection<Workout>> GetUserWorkoutsAsClientAsync(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+            var result = this.workoutsRepository.All().Where(x => x.Clients.Contains(new ClientWorkout
+            {
+                Client = user,
+                ClientId = user.Id,
+                CWorkout = x,
+                WorkoutId = x.Id,
+            }));
+            return result.ToList();
+        }
+
+        public async Task<ICollection<Workout>> GetUserWorkoutsAsTrainerAsync(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+            var result = this.workoutsRepository.All().Where(x => x.Trainers.Contains(new TrainerWorkout
+            {
+                Trainer = user,
+                TrainerId = user.Id,
+                TWorkout = x,
+                WorkoutId = x.Id,
+            }));
+            return result.ToList();
         }
     }
 }
