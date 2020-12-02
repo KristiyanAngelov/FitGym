@@ -3,12 +3,12 @@
 @foreach (var user in Model)
 {
     <div class="row">
-    <div class="col">
-        <img src="@user.ProfilePictureUrl" class="figure-img img-fluid rounded" alt="@user.UserName">
-        <h1 style="text-align:center">@user.FirstName @user.LastName</h1>
-    </div>
-    <div class="col">
-        <p class="figure-caption">@user.Description</p>
-    </div>
+        <div class="col">
+            <img src="@user.ProfilePictureUrl" class="figure-img img-fluid rounded" alt="@user.UserName">
+            <h1 style="text-align:center">@user.FirstName @user.LastName</h1>
+        </div>
+        <div class="col">
+            <p class="figure-caption">@user.Description</p>
+        </div>
     </div>
 }
