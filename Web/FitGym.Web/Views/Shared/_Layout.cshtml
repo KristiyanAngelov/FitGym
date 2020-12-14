@@ -10,61 +10,115 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @*<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="/" asp-controller="Home" asp-action="About">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="AllGroupWorkouts">Group Workouts</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="/" asp-controller="Trainers" asp-action="GetAll">Trainers</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="/" asp-controller="Home" asp-action="Contacts">Contacts</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="/" asp-controller="Forums" asp-action="Index">Forum</a>
+                            </li>
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="MyWorkouts">MyWorkouts</a>
+                                </li>
+                            }
+
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.TrainerRoleName))
+                            {
+                                <li>
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Exercises
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="All">All exercises</a>
+                                            <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="Create">Create exercise</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="CreateWorkout">Create Workout</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>*@
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="/" asp-controller="Home" asp-action="About">About FitGym</a>
+                            <a class="nav-link" asp-area="/" asp-controller="Home" asp-action="About">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="AllGroupWorkouts">Group Workouts</a>
+                            <a class="nav-link" asp-area="/" asp-controller="Workouts" asp-action="AllGroupWorkouts">Group Workouts</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="/" asp-controller="Trainers" asp-action="GetAll">Trainers</a>
+                            <a class="nav-link" asp-area="/" asp-controller="Trainers" asp-action="GetAll">Trainers</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="/" asp-controller="Home" asp-action="Contacts">Contacts</a>
+                            <a class="nav-link" asp-area="/" asp-controller="Home" asp-action="Contacts">Contacts</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="/" asp-controller="Forums" asp-action="Index">Forum</a>
+                            <a class="nav-link" asp-area="/" asp-controller="Forums" asp-action="Index">Forum</a>
                         </li>
                         @if (this.User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="MyWorkouts">MyWorkouts</a>
-                            </li>
-                        }
+        {
+            <li class="nav-item">
+                <a class="nav-link" asp-area="/" asp-controller="Workouts" asp-action="MyWorkouts">MyWorkouts</a>
+            </li>
+        }
 
-                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.TrainerRoleName))
-                        {
-                            <li>
-                                <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Exercises
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="All">All exercises</a>
-                                        <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="Create">Create exercise</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="CreateWorkout">Create Workout</a>
-                            </li>
-                        }
-
+        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.TrainerRoleName))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownExercises" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Exercises
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownExercises">
+                    <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="All">All exercises</a>
+                    <a class="dropdown-item" asp-area="/" asp-controller="Exercises" asp-action="Create">Create exercise</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="/" asp-controller="Workouts" asp-action="CreateWorkout">Create Workout</a>
+            </li>
+        }
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -88,6 +142,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
