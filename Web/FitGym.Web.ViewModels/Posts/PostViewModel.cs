@@ -21,8 +21,6 @@
 
         public string UserProfilePictureUrl { get; set; }
 
-        public IEnumerable<PostCommentViewModel> Comments { get; set; }
-
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Post, PostViewModel>();
