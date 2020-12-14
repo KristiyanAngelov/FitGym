@@ -1,15 +1,16 @@
-﻿using FitGym.Data.Common.Repositories;
-using FitGym.Data.Models;
-using FitGym.Services.Data.Contracts;
-using FitGym.Services.Data.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FitGym.Services.Data
+﻿namespace FitGym.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FitGym.Data.Common.Repositories;
+    using FitGym.Data.Models;
+    using FitGym.Services.Data.Contracts;
+    using FitGym.Services.Data.Interfaces;
+    using Microsoft.AspNetCore.Identity;
+
     public class RolesService : IRolesService
     {
         private readonly IUsersService usersService;

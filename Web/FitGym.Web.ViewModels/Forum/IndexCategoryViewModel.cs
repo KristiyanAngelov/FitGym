@@ -14,6 +14,5 @@
         public string ImageUrl { get; set; }
 
         public int PostsCount { get; set; }
-
     }
 }

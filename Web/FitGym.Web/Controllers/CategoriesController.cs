@@ -1,6 +1,7 @@
 ﻿namespace FitGym.Web.Controllers
 {
     using System.Threading.Tasks;
+
     using FitGym.Common;
     using FitGym.Services.Data;
     using FitGym.Services.Data.Interfaces;

@@ -12,8 +12,8 @@
 
         public ICollection<Workout> MyTrainerWorkouts { get; set; }
 
-        //public void CreateMappings(IProfileExpression configuration)
-        //{
+        // public void CreateMappings(IProfileExpression configuration)
+        // {
         //    configuration.CreateMap<ApplicationUser, MyWorkoutsViewModel>()
         //        .ForMember(
         //        m => m.MyClientWorkouts,
@@ -21,6 +21,6 @@
         //        .ForMember(
         //        m => m.MyTrainerWorkouts,
         //        opt => opt.MapFrom(x => x.TrainerWorkouts));
-        //}
+        // }
     }
 }

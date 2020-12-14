@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+
     using AutoMapper;
     using FitGym.Data.Models;
     using FitGym.Services.Mapping;
@@ -17,6 +18,8 @@
         public string Content { get; set; }
 
         public string UserUserName { get; set; }
+
+        public string UserProfilePictureUrl { get; set; }
 
         public IEnumerable<PostCommentViewModel> Comments { get; set; }
 

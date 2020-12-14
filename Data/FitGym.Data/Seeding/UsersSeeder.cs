@@ -38,7 +38,6 @@
                     LastName = user.LastName,
                     ProfilePictureUrl = user.ProfilePicture,
                 });
-
             }
         }
     }

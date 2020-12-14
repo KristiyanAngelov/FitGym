@@ -19,7 +19,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-shrink-1">
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="/" asp-controller="Home" asp-action="About">About FitGym</a>
                         </li>
@@ -59,13 +59,6 @@
                                     </div>
                                 </div>
                             </li>
-                            @*<li class="dropdown">
-                                <button class="dropbtn">Dropdown</button>
-                                <div class="dropdown-content">
-                                    <a class="nav-link text-dark" asp-area="/" asp-controller="Exercises" asp-action="All">All exercises</a>
-                                    <a class="nav-link text-dark" asp-area="/" asp-controller="Exercises" asp-action="Create">Create exercise</a>
-                                </div>
-                            </li>*@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="/" asp-controller="Workouts" asp-action="CreateWorkout">Create Workout</a>
                             </li>

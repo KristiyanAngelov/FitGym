@@ -17,6 +17,5 @@
 
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
-
     }
 }
