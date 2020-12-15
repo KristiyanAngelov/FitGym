@@ -37,18 +37,6 @@
         {
             IQueryable<Category> query =
                 this.categoriesRepository.All().OrderBy(x => x.Name);
-            if (count.HasValue)
-            {
-                query = query.Take(count.Value);
-            }
-
-            return query.To<T>().ToList();
-        }
-
-        public IEnumerable<T> GetAllPosts<T>(int id)
-        {
-            IQueryable<Category> query =
-                this.categoriesRepository.All().Where(x => x.Id == id).OrderBy(x => x.Name);
 
             return query.To<T>().ToList();
         }

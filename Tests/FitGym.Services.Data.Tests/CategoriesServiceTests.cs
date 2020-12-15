@@ -1,19 +1,16 @@
 ﻿namespace FitGym.Services.Data.Tests
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
 
-    using FitGym.Data;
     using FitGym.Data.Common.Repositories;
     using FitGym.Data.Models;
     using FitGym.Services.Mapping;
     using FitGym.Web.ViewModels;
     using FitGym.Web.ViewModels.Categories;
     using FitGym.Web.ViewModels.Forum;
-    using Microsoft.EntityFrameworkCore;
     using Moq;
     using Xunit;
 
