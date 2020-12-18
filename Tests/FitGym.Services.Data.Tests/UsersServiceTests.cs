@@ -164,5 +164,33 @@
             Assert.Equal("Test2", result.UserName);
             Assert.Equal("Test1", result2.UserName);
         }
+
+        [Fact]
+        public async Task DeleteUserShouldMakeUserIsDeleted()
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+            var db = new ApplicationDbContext(options);
+            var usersRepository = new EfDeletableEntityRepository<ApplicationUser>(db);
+
+            var user = new ApplicationUser
+            {
+                Id = "1",
+                UserName = "Test1",
+                Email = "test@email.com",
+                PasswordHash = "12345678",
+                CreatedOn = DateTime.Now,
+            };
+
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            var userManager = new Mock<FakeUserManager>();
+            var service = new UsersService(usersRepository, userManager.Object);
+
+            await service.DeleteUser("1");
+
+            Assert.True(user.IsDeleted);
+        }
     }
 }
