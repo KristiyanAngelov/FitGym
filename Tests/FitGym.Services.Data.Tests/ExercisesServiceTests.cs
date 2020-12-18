@@ -1,4 +1,8 @@
-﻿namespace FitGym.Services.Data.Tests
+﻿using Xunit;
+
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
+namespace FitGym.Services.Data.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +17,6 @@
     using FitGym.Web.ViewModels;
     using FitGym.Web.ViewModels.Exercises;
     using Moq;
-    using Xunit;
 
     public class ExercisesServiceTests
     {

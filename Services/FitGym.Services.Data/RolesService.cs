@@ -15,16 +15,13 @@
     {
         private readonly IUsersService usersService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IDeletableEntityRepository<ApplicationRole> rolesRepository;
 
         public RolesService(
             IUsersService usersService,
-            UserManager<ApplicationUser> userManager,
-            IDeletableEntityRepository<ApplicationRole> rolesRepository)
+            UserManager<ApplicationUser> userManager)
         {
             this.usersService = usersService;
             this.userManager = userManager;
-            this.rolesRepository = rolesRepository;
         }
 
         public async Task<ApplicationUser> AddRoleAsync(string userId, string roleName)
