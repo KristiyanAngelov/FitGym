@@ -2,6 +2,10 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
+<h1 style="color:Red;"  align="center" >We're still closed due to Covid-19 </h1>
+<div class="chart" style="position: center; height:350px; width:100">
+    <canvas id="myChart"></canvas>
+</div>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -39,3 +43,83 @@
     <p>Със своята обща площ от 2000 кв.м., добра локация, изключително голямо разнообразие от силови и кардио фитнес уреди, множество групови тренировки, релакс зона и протеинов бар, FIT GYM e фитнес клубът, който, ако не сте запалени фитнес маниаци, ще ви превърне в такива.</p>
     <p>Елате при нас и ни позволете да се погрижим за вашето здраве и самочувствие!</p>
 </div>
+
+
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script>
+        var today = new Date().toLocaleDateString('en-CA');
+        var aWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString('en-CA');
+
+            window.onload=function testAPI() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.covid19tracking.narrativa.com/api/country/bulgaria?date_from='+`${aWeekAgo}`+'&date_to='+`${today}`,
+                    dataType: 'json',
+                    success: function (data) {
+                        var dates = Object.keys(data.dates);
+                        var newCases = [];
+
+                        Object.keys(data.dates).forEach(el => {
+                            console.log(el)
+                            newCases.push(data.dates[`${el}`].countries.Bulgaria.today_new_confirmed);
+                            //console.log("today_new_confirmed --> "+ el + ' = ' + data.dates[`${el}`].countries.Bulgaria.today_new_confirmed);
+                        });
+
+                        //----------------------------------------------------------//
+                        BuildChart(dates, newCases, "New daily cases");
+
+                    }
+                });
+            }
+    </script>
+    <script>
+        function BuildChart(labels, values, chartTitle) {
+            var data = {
+                labels: labels,
+                datasets: [{
+                    label: chartTitle, // Name the series
+                    data: values,
+                    backgroundColor: ['rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                    ],
+                }],
+            };
+
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true, // Instruct chart js to respond nicely.
+                    maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Date'
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'People'
+                            }
+                        }]
+                    },
+                }
+            });
+
+            return myChart;
+        }
+    </script>
+}
