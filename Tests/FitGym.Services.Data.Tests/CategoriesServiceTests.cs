@@ -43,14 +43,12 @@
                     new Category
                     {
                         Name = "Test",
-                        Title = "Test",
                         Description = "Test",
                         ImageUrl = "Test",
                     },
                     new Category
                     {
                         Name = "Test2",
-                        Title = "Test2",
                         Description = "Test2",
                         ImageUrl = "Test2",
                     },
@@ -71,14 +69,12 @@
                     new Category
                     {
                         Name = "Test",
-                        Title = "Test",
                         Description = "Test",
                         ImageUrl = "Test",
                     },
                     new Category
                     {
                         Name = "Test2",
-                        Title = "Test2",
                         Description = "Test2",
                         ImageUrl = "Test2",
                     },

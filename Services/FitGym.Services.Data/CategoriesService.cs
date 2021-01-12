@@ -23,7 +23,6 @@
             var category = new Category
             {
                 Name = name,
-                Title = title,
                 Description = description,
                 ImageUrl = imageUrl,
             };

@@ -3,6 +3,7 @@ namespace FitGym.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using FitGym.Data.Common.Models;
 
@@ -32,10 +33,15 @@ namespace FitGym.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        [Required]
+        [MaxLength(30)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MaxLength(30)]
         public string LastName { get; set; }
 
+        [MaxLength(300)]
         public string Description { get; set; }
 
         public string ProfilePictureUrl { get; set; }

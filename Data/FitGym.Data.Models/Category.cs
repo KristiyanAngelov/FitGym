@@ -1,6 +1,7 @@
 ﻿namespace FitGym.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using FitGym.Data.Common.Models;
 
@@ -11,10 +12,11 @@
             this.Posts = new HashSet<Post>();
         }
 
+        [Required]
+        [MaxLength(30)]
         public string Name { get; set; }
 
-        public string Title { get; set; }
-
+        [MaxLength(300)]
         public string Description { get; set; }
 
         public string ImageUrl { get; set; }
