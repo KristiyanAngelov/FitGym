@@ -2,7 +2,7 @@
 
 Training project for gym website.
 
-For the development are used **MSSQL Database, Entity Framework Core, .NET 5, Repository and Service Layer Patterns, MVC Pattern, Bootstrap, XUnit, Selenium.**
+For the development are used **MSSQL Database, Entity Framework Core, .NET 5, Repository and Service Layer Patterns, MVC Pattern, Bootstrap, AJAX XUnit, Selenium.**
 
 The main functionalities include:
 - **for clients**: presenting the trainers, the workouts, the contact form and blog
